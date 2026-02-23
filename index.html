@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Próximo Passo: Pet Subscriptions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pet: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            500: '#ff6b35', // Laranja vibrante
+                            600: '#e55a2b',
+                            900: '#2d3748', // Azul escuro/cinza
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        .expandable-content.open {
+            max-height: 1000px; /* Suficiente para o conteúdo */
+            opacity: 1;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.open {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-pet-50 text-pet-900 font-sans antialiased selection:bg-pet-500 selection:text-white">
+
+    <!-- HERO SECTION (Impacto Imediato) -->
+    <header class="relative bg-pet-900 text-white overflow-hidden py-20 lg:py-32">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div class="inline-block bg-pet-500 text-white px-3 py-1 rounded-full text-sm font-bold tracking-wide mb-6 uppercase shadow-lg">
+                Proposta de Expansão
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                O Hotel lota no Carnaval.<br>
+                <span class="text-pet-500">Mas quem paga as contas em agosto?</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl leading-relaxed">
+                Adestramento tem prazo de validade. Hotelaria é sazonal e movida a viagens de última hora. Vamos criar um <strong>Plano de Assinaturas (MRR)</strong> para o dia a dia, garantindo o caixa fixo enquanto você espera a próxima alta temporada.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#plans" class="bg-pet-500 hover:bg-pet-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-xl shadow-pet-500/30 text-center">
+                    Ver a Ideia <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+                <a href="#logic" class="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-xl text-lg transition text-center backdrop-blur-sm border border-white/10">
+                    A Lógica do Negócio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- THE "AHA" MOMENT (Para gente ocupada) -->
+    <section id="logic" class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-pet-50 border border-pet-100 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 mx-auto bg-pet-100 text-pet-500 rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Antídoto contra Sazonalidade</h3>
+                    <p class="text-gray-600">O Hotel vive de feriados e imprevistos. A assinatura mensal é o que garante o aluguel pago nos meses de baixa procura.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-pet-50 border border-pet-100 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 mx-auto bg-pet-100 text-pet-500 rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Funil Infalível</h3>
+                    <p class="text-gray-600">O cliente da areia do gato vira o cliente de R$2.000 do adestramento amanhã.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-pet-50 border border-pet-100 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 mx-auto bg-pet-100 text-pet-500 rounded-full flex items-center justify-center text-2xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Retenção de Adestramento</h3>
+                    <p class="text-gray-600">Não perca contato após a "alta" do aluno. Mantenha ele no seu ecossistema comprando serviços menores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PLANS (The Core Idea) -->
+    <section id="plans" class="py-20 bg-pet-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4">Os Níveis de Assinatura 🐾</h2>
+                <p class="text-xl text-gray-600">Explore as ramificações de negócio para cada nível abaixo.</p>
+            </div>
+
+            <div class="space-y-6">
+                
+                <!-- PLANO BÁSICO -->
+                <div class="plan-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-plan="plan1">
+                    <button onclick="toggleCard('plan1')" class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition cursor-pointer">
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl shrink-0">
+                                🦴
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-pet-900">Plano Essencial <span class="text-sm font-normal text-gray-500 ml-2">(Alta Escala)</span></h3>
+                                <p class="text-gray-600 mt-1">O "Pão de Cada Dia". Foco em conveniência absoluta e baixo custo de entrega.</p>
+                            </div>
+                        </div>
+                        <i id="icon-plan1" class="fas fa-chevron-down text-gray-400 chevron text-xl"></i>
+                    </button>
+                    
+                    <div id="content-plan1" class="expandable-content bg-gray-50 border-t border-gray-100">
+                        <div class="p-8">
+                            <h4 class="font-bold text-lg mb-4 text-pet-900 border-b pb-2">O que inclui:</h4>
+                            <ul class="space-y-3 text-gray-700 mb-6">
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <strong>Kit Roedor Semanal:</strong> Entrega de ossos seguros (desidratados, chifres) para cães. Salva móveis e reduz ansiedade.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <strong>Logística Felina:</strong> Entrega semanal de areia higiênica e recolhimento (opcional) da antiga. O maior pesadelo do dono de gato, resolvido.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <strong>Rotina de Banho Básico:</strong> 2 banhos rápidos no mês para manutenção (sem tosa complexa).</li>
+                            </ul>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-gray-200">
+                                <h4 class="font-bold text-pet-500 text-sm uppercase mb-2"><i class="fas fa-lightbulb"></i> Visão de Negócio (Ramificação)</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    <strong>Ticket Médio:</strong> R$ 90 a R$ 150/mês.<br>
+                                    <strong>Margem:</strong> O segredo aqui é parceria B2B. Compre areia/ossos direto da fábrica por atacado. A entrega pode ser feita de moto/bike em rotas otimizadas por bairro no mesmo dia.<br>
+                                    <strong>O "Pulo do Gato":</strong> Donos de gatos raramente usam hotel. Isso abre um novo mercado gigantesco pra você.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLANO INTERMEDIÁRIO -->
+                <div class="plan-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative" data-plan="plan2">
+                    <!-- Ribbon -->
+                    <div class="absolute top-0 right-0 bg-pet-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">
+                        MAIS POPULAR
+                    </div>
+
+                    <button onclick="toggleCard('plan2')" class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition cursor-pointer">
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-2xl shrink-0">
+                                🐕
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-pet-900">Plano Rotina <span class="text-sm font-normal text-gray-500 ml-2">(Lifestyle)</span></h3>
+                                <p class="text-gray-600 mt-1">Passeios, necessidades personalizadas e rede de descontos.</p>
+                            </div>
+                        </div>
+                        <i id="icon-plan2" class="fas fa-chevron-down text-gray-400 chevron text-xl"></i>
+                    </button>
+                    
+                    <div id="content-plan2" class="expandable-content bg-gray-50 border-t border-gray-100">
+                        <div class="p-8">
+                            <h4 class="font-bold text-lg mb-4 text-pet-900 border-b pb-2">O que inclui:</h4>
+                            <ul class="space-y-3 text-gray-700 mb-6">
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Tudo do plano Essencial +</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <strong>Dog Walking Programado:</strong> 2 a 3 passeios semanais com equipe treinada por você.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <strong>Clube de Vantagens:</strong> Descontos agressivos em veterinários, farmácias pet e petshops parceiros.</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> <strong>Concierge Pet:</strong> Esqueceu a ração? Nós compramos e entregamos junto com o passeio de hoje.</li>
+                            </ul>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-gray-200">
+                                <h4 class="font-bold text-pet-500 text-sm uppercase mb-2"><i class="fas fa-lightbulb"></i> Visão de Negócio (Ramificação)</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    <strong>Ticket Médio:</strong> R$ 300 a R$ 500/mês.<br>
+                                    <strong>Margem:</strong> O Dog Walking pode ser terceirizado com passeadores validados pela sua metodologia. Você ganha na margem e na escala.<br>
+                                    <strong>O "Pulo do Gato":</strong> Ao criar uma rede de parceiros (Vets/Petshops), você não só agrega valor ao plano, mas pode cobrar uma taxa de indicação (comissão) dos parceiros pelas vendas geradas pelo seu clube.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLANO SÉRIO -->
+                <div class="plan-card bg-white rounded-2xl shadow-sm border border-pet-200 overflow-hidden relative" data-plan="plan3">
+                    <button onclick="toggleCard('plan3')" class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition cursor-pointer">
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 bg-pet-900 text-white rounded-2xl flex items-center justify-center text-2xl shrink-0">
+                                🎓
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-pet-900">Plano VIP <span class="text-sm font-normal text-gray-500 ml-2">(Segurança & Continuidade)</span></h3>
+                                <p class="text-gray-600 mt-1">Resolve o desespero de última hora do tutor e mantém o cão adestrado na linha.</p>
+                            </div>
+                        </div>
+                        <i id="icon-plan3" class="fas fa-chevron-down text-gray-400 chevron text-xl"></i>
+                    </button>
+                    
+                    <div id="content-plan3" class="expandable-content bg-pet-900 text-white border-t border-pet-800">
+                        <div class="p-8">
+                            <h4 class="font-bold text-lg mb-4 text-pet-500 border-b border-pet-700 pb-2">O que inclui:</h4>
+                            <ul class="space-y-3 text-gray-300 mb-6">
+                                <li class="flex items-start"><i class="fas fa-star text-pet-500 mt-1 mr-3"></i> Tudo do plano Rotina +</li>
+                                <li class="flex items-start"><i class="fas fa-star text-pet-500 mt-1 mr-3"></i> <strong>Manutenção de Adestramento:</strong> 1 a 2 sessões mensais para reforçar comandos dos "ex-alunos" (evita que o cão perca o que aprendeu no pacote principal).</li>
+                                <li class="flex items-start"><i class="fas fa-star text-pet-500 mt-1 mr-3"></i> <strong>Vaga Garantida (Feriados e Emergências):</strong> Assinantes VIP têm preferência de reserva no Hotel durante Natal/Carnaval, e taxa zerada de "encaixe de emergência" para imprevistos.</li>
+                                <li class="flex items-start"><i class="fas fa-star text-pet-500 mt-1 mr-3"></i> <strong>Consultoria de Rotina VIP:</strong> Suporte no WhatsApp para ajustes comportamentais do dia a dia.</li>
+                            </ul>
+                            
+                            <div class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-sm">
+                                <h4 class="font-bold text-white text-sm uppercase mb-2"><i class="fas fa-gem"></i> Visão de Negócio (Ramificação)</h4>
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    <strong>A Lógica do Mundo Real:</strong> Hotelaria é imprevisível. As pessoas viajam de supetão ou lembram de reservar em cima da hora. O grande diferencial de vendas desse plano é o <strong>Gatilho do Medo</strong>: o tutor paga a mensalidade o ano todo só para ter a garantia de que, no dia que ele precisar desesperadamente de um hotel confiável, vocês terão uma vaga para o cachorro dele. É a "taxa de paz de espírito".
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="py-24 bg-pet-500 text-white text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-4xl font-extrabold mb-6">Bora testar essa ideia?</h2>
+            <p class="text-xl mb-10 text-pet-100">Não precisa lançar tudo de uma vez. Podemos fazer um <strong>MVP (Produto Mínimo Viável)</strong>. Mande um WhatsApp pra 10 clientes atuais oferecendo o "Kit Roedor + Banho" mensal e veja a mágica acontecer.</p>
+            <button onclick="alert('Boa! Agora liga pra mim pra gente desenhar como operacionalizar isso no papel. Te ajudo com as planilhas! 😉')" class="bg-white text-pet-900 font-bold py-4 px-10 rounded-full text-xl hover:bg-pet-50 transition shadow-2xl transform hover:-translate-y-1">
+                Amei a ideia, qual o próximo passo?
+            </button>
+        </div>
+    </section>
+
+    <!-- NOTA DE RODAPÉ SOBRE SEO -->
+    <section class="py-12 bg-pet-900 text-pet-100 border-t border-pet-800">
+        <div class="container mx-auto px-6 max-w-4xl animate-fade-in-up">
+            <div class="bg-white/5 p-8 rounded-2xl border border-white/10 flex flex-col md:flex-row gap-8 items-center hover:bg-white/10 transition">
+                <div class="w-20 h-20 bg-pet-500/20 text-pet-500 rounded-full flex items-center justify-center text-4xl shrink-0">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="text-left">
+                    <h4 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 text-lg"></i> Ei! Lembre também disso...
+                    </h4>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        O assinante fiel não vai pro Google procurar concorrente na hora da emergência, <strong class="text-white">mas quem ainda não te conhece, vai!</strong> Quando o desespero bater e um tutor pesquisar "hotel para cachorro urgente" ou "adestrador na minha região", você <em>precisa</em> ser o primeiro resultado. 
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Temos que conversar seriamente sobre investir em <strong>SEO (Otimização para o Google)</strong> e deixar seu Google Meu Negócio impecável. Não é luxo, é captação ativa. Se você não tá lá no topo, tá deixando dinheiro na mesa pro concorrente!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-pet-900 text-center py-8 text-gray-500 text-sm">
+        <p>Feito com 💡 para explodir o faturamento do seu novo negócio.</p>
+    </footer>
+
+    <script>
+        // Função para abrir um card específico e fechar os outros
+        function openCard(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            // Se já está aberto, não faz nada
+            if (content.classList.contains('open')) return;
+            
+            // Abre o card alvo
+            content.classList.add('open');
+            icon.classList.add('open');
+            
+            // Fecha os outros (Efeito Acordeão)
+            ['plan1', 'plan2', 'plan3'].forEach(planId => {
+                if (planId !== id) {
+                    const otherContent = document.getElementById(`content-${planId}`);
+                    const otherIcon = document.getElementById(`icon-${planId}`);
+                    otherContent.classList.remove('open');
+                    otherIcon.classList.remove('open');
+                }
+            });
+        }
+
+        // Função mantida para cliques manuais
+        function toggleCard(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('open')) {
+                // Se a pessoa clicar em um que já tá aberto, ele fecha
+                content.classList.remove('open');
+                icon.classList.remove('open');
+            } else {
+                openCard(id);
+            }
+        }
+
+        // Lógica de Scroll Reativo (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Quando o card entra na zona delimitada da tela
+                    if (entry.isIntersecting) {
+                        const planId = entry.target.getAttribute('data-plan');
+                        openCard(planId);
+                    }
+                });
+            }, {
+                // Cria uma "zona invisível" no meio da tela.
+                // Dispara quando o topo do card chega a 35% do topo da janela
+                // e para de disparar quando passa dos 35% da base.
+                rootMargin: '-35% 0px -35% 0px',
+                threshold: 0
+            });
+
+            // Observa todos os cards de planos
+            document.querySelectorAll('.plan-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
